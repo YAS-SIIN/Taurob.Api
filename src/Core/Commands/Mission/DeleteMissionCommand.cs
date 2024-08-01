@@ -17,6 +17,9 @@ public class DeleteMissionCommand : IRequest<ResultDto<int>>
 }
 
 
+/// <summary>
+/// Check mission input data validation in delete
+/// </summary>
 public class DeleteMissionCommandValidator : AbstractValidator<DeleteMissionCommand>
 {
     public DeleteMissionCommandValidator()

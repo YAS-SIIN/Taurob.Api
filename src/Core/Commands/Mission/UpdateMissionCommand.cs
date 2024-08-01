@@ -1,7 +1,7 @@
 ﻿
 using FluentValidation;
 
-using Mc2.CrudTest.Core.Commands.Robot;
+using Taurob.Api.Core.Commands.Robot;
 
 using MediatR;
 
@@ -38,6 +38,9 @@ public class UpdateMissionCommand : IRequest<ResultDto<MissionResponse>>
 }
 
 
+/// <summary>
+/// Check mission input data validation in update
+/// </summary>
 public class UpdateMissionCommandValidator : AbstractValidator<UpdateMissionCommand>
 {
     public UpdateMissionCommandValidator()

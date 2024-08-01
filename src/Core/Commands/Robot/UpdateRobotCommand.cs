@@ -38,6 +38,9 @@ public class UpdateRobotCommand : IRequest<ResultDto<RobotResponse>>
 }
 
 
+/// <summary>
+/// Check robot input data validation in update
+/// </summary>
 public class UpdateRobotCommandValidator : AbstractValidator<UpdateRobotCommand>
 {
     public UpdateRobotCommandValidator()

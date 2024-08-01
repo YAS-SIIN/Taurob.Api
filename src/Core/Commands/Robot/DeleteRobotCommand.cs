@@ -19,6 +19,10 @@ public class DeleteRobotCommand : IRequest<ResultDto<int>>
 }
 
 
+
+/// <summary>
+/// Check robot input data validation in delete
+/// </summary>
 public class DeleteRobotCommandValidator : AbstractValidator<DeleteRobotCommand>
 {
     public DeleteRobotCommandValidator()

@@ -1,7 +1,7 @@
 ﻿
 using FluentValidation;
 
-using Mc2.CrudTest.Core.Commands.Robot;
+using Taurob.Api.Core.Commands.Robot;
 
 using MediatR;
 using System.ComponentModel;
@@ -34,6 +34,9 @@ public class CreateMissionCommand : IRequest<ResultDto<MissionResponse>>
 }
 
 
+/// <summary>
+/// Check mission input data validation in create
+/// </summary>
 public class CreateMissionCommandValidator : AbstractValidator<CreateMissionCommand>
 {
     public CreateMissionCommandValidator()

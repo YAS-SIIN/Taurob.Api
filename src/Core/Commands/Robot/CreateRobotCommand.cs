@@ -8,7 +8,7 @@ using System.ComponentModel;
 using Taurob.Api.Domain.DTOs.Exceptions;
 using Taurob.Api.Domain.DTOs.Robot;
 
-namespace Mc2.CrudTest.Core.Commands.Robot;
+namespace Taurob.Api.Core.Commands.Robot;
 
 public class CreateRobotCommand : IRequest<ResultDto<RobotResponse>>
 {
@@ -32,6 +32,9 @@ public class CreateRobotCommand : IRequest<ResultDto<RobotResponse>>
 }
 
 
+/// <summary>
+/// Check robot input data validation in create
+/// </summary>
 public class CreateRobotCommandValidator : AbstractValidator<CreateRobotCommand>
 {
     public CreateRobotCommandValidator()

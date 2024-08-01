@@ -1,6 +1,6 @@
 ﻿
-using Mc2.CrudTest.Infra.Data.Context;
-using Mc2.CrudTest.Infra.Data.UnitofWork;
+using Taurob.Api.Infra.Data.Context;
+using Taurob.Api.Infra.Data.UnitofWork;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;

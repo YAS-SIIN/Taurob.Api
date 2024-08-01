@@ -6,7 +6,7 @@ using System.Reflection.Emit;
 
 using Taurob.Api.Domain.Entities;
 
-namespace Mc2.CrudTest.Infra.Data.Context;
+namespace Taurob.Api.Infra.Data.Context;
 
 
 public class TaurobDBContext : DbContext

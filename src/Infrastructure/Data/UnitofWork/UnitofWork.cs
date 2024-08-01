@@ -1,9 +1,9 @@
 ﻿
-using Mc2.CrudTest.Infra.Data.Context;
+using Taurob.Api.Infra.Data.Context;
 
 using Taurob.Api.Domain.Interfaces.UnitOfWork;
 
-namespace Mc2.CrudTest.Infra.Data.UnitofWork;
+namespace Taurob.Api.Infra.Data.UnitofWork;
 
 
 public class UnitOfWork : IUnitOfWork, IDisposable
