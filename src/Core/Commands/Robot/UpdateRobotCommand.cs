@@ -45,7 +45,7 @@ public class UpdateRobotCommandValidator : AbstractValidator<UpdateRobotCommand>
 {
     public UpdateRobotCommandValidator()
     {
-        RuleFor(v => v.Id).NotNull().WithMessage("Enter {PropertyName}.");
+        RuleFor(v => v.Id).NotEqual(0).WithMessage("Enter {PropertyName}.");
 
         RuleFor(v => v.Name)
       .NotEmpty().WithMessage("Enter {PropertyName}.")

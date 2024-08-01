@@ -8,6 +8,7 @@ using Taurob.Api.Domain.Enums;
 using Taurob.Api.Presentation.Shared.Mapper;
 using Microsoft.EntityFrameworkCore;
 using Taurob.Api.Presentation.Shared.Tools;
+using Taurob.Api.Core.Commands.Robot;
 
 namespace Taurob.Api.Application.UseCases.Mission.Commands;
 
@@ -25,15 +26,16 @@ public class UpdateMissionCommandHandler : IRequestHandler<UpdateMissionCommand,
         if (request is null)
             throw new ErrorException((int)EnumResponseStatus.BadRequest, (int)EnumResponseResultCodes.NotFound, "The input data is empty.");
 
-        var inputData = await _dbContext.Missions.FindAsync(request.Id, cancellationToken);
+        var inputData = await _dbContext.Missions.AsNoTracking().FirstOrDefaultAsync(x => x.Id == request.Id);
 
         if (inputData is null && inputData is not Domain.Entities.Mission)
             throw new ErrorException((int)EnumResponseStatus.NotFound, (int)EnumResponseResultCodes.NotFound, EnumResponseResultCodes.NotFound.ToString());
 
-         
+        inputData = Mapper<Domain.Entities.Mission, UpdateMissionCommand>.MappClasses(request);
+
         _dbContext.Missions.Attach(inputData);
         _dbContext.Entry(inputData).State = EntityState.Modified;
-        _dbContext.SaveChanges();
+        await _dbContext.SaveChangesAsync(cancellationToken);
 
         MissionResponse outputData = Mapper<MissionResponse, Domain.Entities.Mission>.MappClasses(inputData);
 

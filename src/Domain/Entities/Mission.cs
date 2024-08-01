@@ -19,6 +19,10 @@ public class Mission : BaseEntity<int>
     public string Name { get; set; }
 
     /// <summary>
+    /// Robot foreign key
+    /// </summary>
+    public int RobotId { get; set; }
+    /// <summary>
     /// Robot of mission
     /// </summary>
     public Robot Robot { get; set; }

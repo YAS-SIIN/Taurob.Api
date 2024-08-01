@@ -1,8 +1,5 @@
-﻿
-using FluentValidation;
-
+﻿using FluentValidation;
 using MediatR;
-
 using Taurob.Api.Domain.DTOs.Exceptions;
 
 namespace Taurob.Api.Core.Commands.Mission;
@@ -25,7 +22,7 @@ public class DeleteMissionCommandValidator : AbstractValidator<DeleteMissionComm
     public DeleteMissionCommandValidator()
     {
 
-        RuleFor(v => v.Id).NotNull().WithMessage("Enter {PropertyName}.");
+        RuleFor(v => v.Id).NotEqual(0).WithMessage("Enter {PropertyName}.");
 
     }
 

@@ -1,10 +1,5 @@
-﻿
-
-using FluentValidation;
-
+﻿using FluentValidation;
 using MediatR;
-
-using Taurob.Api.Core.Commands.Robot;
 using Taurob.Api.Domain.DTOs.Exceptions;
 
 namespace Taurob.Api.Core.Commands.Robot;
@@ -28,7 +23,7 @@ public class DeleteRobotCommandValidator : AbstractValidator<DeleteRobotCommand>
     public DeleteRobotCommandValidator()
     {
 
-        RuleFor(v => v.Id).NotNull().WithMessage("Enter {PropertyName}.");
+        RuleFor(v => v.Id).NotEqual(0).WithMessage("Enter {PropertyName}.");
 
     }
 

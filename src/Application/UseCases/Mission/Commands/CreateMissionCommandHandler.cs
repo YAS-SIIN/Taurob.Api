@@ -1,5 +1,7 @@
 ﻿
 using MediatR;
+using Microsoft.EntityFrameworkCore;
+
 using Taurob.Api.Core.Commands.Mission;
 using Taurob.Api.Domain.DTOs.Exceptions;
 using Taurob.Api.Domain.DTOs.Mission;
@@ -23,6 +25,11 @@ public class CreateMissionCommandHandler : IRequestHandler<CreateMissionCommand,
     {
         if (request is null)
             throw new ErrorException((int)EnumResponseStatus.BadRequest, (int)EnumResponseResultCodes.NotFound, "The input data is empty.");
+
+        var robotData = await _dbContext.Robots.FirstOrDefaultAsync(x => x.Id == request.RobotId);
+
+        if (robotData is null && robotData is not Domain.Entities.Robot)
+            throw new ErrorException((int)EnumResponseStatus.NotFound, (int)EnumResponseResultCodes.NotFound, "Robot id not found");
 
         Domain.Entities.Mission inputData = Mapper<Domain.Entities.Mission, CreateMissionCommand>.MappClasses(request);
 

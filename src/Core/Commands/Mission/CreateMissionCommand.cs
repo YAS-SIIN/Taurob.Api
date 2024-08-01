@@ -1,14 +1,9 @@
 ﻿
 using FluentValidation;
-
-using Taurob.Api.Core.Commands.Robot;
-
 using MediatR;
 using System.ComponentModel;
-
 using Taurob.Api.Domain.DTOs.Exceptions;
 using Taurob.Api.Domain.DTOs.Mission;
-using Taurob.Api.Domain.DTOs.Robot;
 
 namespace Taurob.Api.Core.Commands.Mission;
 
@@ -20,10 +15,10 @@ public class CreateMissionCommand : IRequest<ResultDto<MissionResponse>>
     public string Name { get; set; }
 
     /// <summary>
-    /// Robot of mission
+    /// Robot foreign key
     /// </summary>
-    [DisplayName("Robot data")]
-    public CreateRobotCommand RobotData { get; set; }
+    [DisplayName("Robot")]
+    public int RobotId { get; set; }
 
     /// <summary>
     /// Description
@@ -46,6 +41,7 @@ public class CreateMissionCommandValidator : AbstractValidator<CreateMissionComm
       .MaximumLength(100).WithMessage("Maximum size of {PropertyName} is {MaxLength}.")
       .MinimumLength(3).WithMessage("Minimum size of {PropertyName} is {MinLength}.");
 
+        RuleFor(v => v.RobotId).NotEqual(0).WithMessage("Enter {PropertyName}.");
     }
 
 }

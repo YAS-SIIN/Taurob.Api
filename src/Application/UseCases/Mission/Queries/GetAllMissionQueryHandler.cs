@@ -20,19 +20,12 @@ public class GetAllMissionQueryHandler : IRequestHandler<GetAllMissionQuery, Res
     public async Task<ResultDto<IList<MissionResponse>>> Handle(GetAllMissionQuery request,
         CancellationToken cancellationToken)
     {
-        var response = _dbContext.Missions;
-        var resData = response.Select(x => new MissionResponse
+        var resData = _dbContext.Missions.Select(x => new MissionResponse
         {
             Id = x.Id,
             Name = x.Name,
             Description = x.Description,
-            RobotData = new Domain.DTOs.Robot.RobotResponse
-            {
-                Id = x.Robot.Id,
-                Name = x.Robot.Name,
-                Description =  x.Robot.Description,
-                Modelname = x.Robot.Modelname
-            },
+            RobotId = x.RobotId,
         }).ToList();
 
         return ResultDto<IList<MissionResponse>>.ReturnData(resData, (int)EnumResponseStatus.OK, (int)EnumResponseResultCodes.Success, EnumResponseResultCodes.Success.GetDisplayName());

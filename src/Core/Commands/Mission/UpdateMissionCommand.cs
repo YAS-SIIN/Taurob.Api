@@ -25,10 +25,10 @@ public class UpdateMissionCommand : IRequest<ResultDto<MissionResponse>>
     public string Name { get; set; }
 
     /// <summary>
-    /// Robot of mission
+    /// Robot foreign key
     /// </summary>
-    [DisplayName("Robot data")]
-    public CreateRobotCommand RobotData { get; set; }
+    [DisplayName("Robot")]
+    public int RobotId { get; set; }
 
     /// <summary>
     /// Description
@@ -46,14 +46,14 @@ public class UpdateMissionCommandValidator : AbstractValidator<UpdateMissionComm
     public UpdateMissionCommandValidator()
     {
 
-        RuleFor(v => v.Id).NotNull().WithMessage("Enter {PropertyName}.");
-
+        RuleFor(v => v.Id).NotEqual(0).WithMessage("Enter {PropertyName}.");
 
         RuleFor(v => v.Name)
       .NotEmpty().WithMessage("Enter {PropertyName}.")
       .MaximumLength(100).WithMessage("Maximum size of {PropertyName} is {MaxLength}.")
       .MinimumLength(3).WithMessage("Minimum size of {PropertyName} is {MinLength}.");
-         
+
+        RuleFor(v => v.RobotId).NotEqual(0).WithMessage("Enter {PropertyName}.");
     }
 
 }

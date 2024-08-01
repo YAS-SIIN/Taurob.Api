@@ -1,10 +1,6 @@
-﻿
-using FluentValidation;
-
+﻿using FluentValidation;
 using MediatR;
-
 using System.ComponentModel;
-
 using Taurob.Api.Domain.DTOs.Exceptions;
 using Taurob.Api.Domain.DTOs.Robot;
 
@@ -49,7 +45,7 @@ public class CreateRobotCommandValidator : AbstractValidator<CreateRobotCommand>
       .MaximumLength(100).WithMessage("Maximum size of {PropertyName} is {MaxLength}.")
       .MinimumLength(3).WithMessage("Minimum size of {PropertyName} is {MinLength}.");
 
-
+         
     }
 
 }

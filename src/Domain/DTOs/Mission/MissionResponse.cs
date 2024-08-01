@@ -6,15 +6,17 @@ using Taurob.Api.Domain.DTOs.Robot;
 namespace Taurob.Api.Domain.DTOs.Mission;
 
 public class MissionResponse : BaseResponse
-{ 
+{
     /// <summary>
     /// Name of mission
     /// </summary>
+    [DisplayName("Name")]
     public string Name { get; set; }
 
     /// <summary>
-    /// Robot of mission
+    /// Robot foreign key
     /// </summary>
-    public RobotResponse RobotData { get; set; }
-
+    [DisplayName("Robot")]
+    public int RobotId { get; set; }
+     
 }
