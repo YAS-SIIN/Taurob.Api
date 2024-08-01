@@ -7,7 +7,7 @@ using Taurob.Api.Domain.DTOs.Mission;
 
 namespace Taurob.Api.Core.Queries.Mission;
 
-public class GetMissionQuery : IRequest<ResultDto<GetMissionResponse>>
+public class GetMissionQuery : IRequest<ResultDto<MissionResponse>>
 {
     /// <summary>
     /// Mission Id

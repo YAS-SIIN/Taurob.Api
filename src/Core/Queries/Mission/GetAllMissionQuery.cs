@@ -7,6 +7,6 @@ using Taurob.Api.Domain.DTOs.Robot;
 
 namespace Taurob.Api.Core.Queries.Mission;
 
-public class GetAllMissionQuery : IRequest<ResultDto<IList<GetMissionResponse>>>
+public class GetAllMissionQuery : IRequest<ResultDto<IList<MissionResponse>>>
 {
 }
