@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.InMemory;
 
-using Taurob.Api.Domain.Interfaces.UnitOfWork;
+
 using FluentValidation;
 using Taurob.Api.Core;
 

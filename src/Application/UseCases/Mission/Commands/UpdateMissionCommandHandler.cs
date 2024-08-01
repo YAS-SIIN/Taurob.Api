@@ -3,14 +3,14 @@ using MediatR;
 using Taurob.Api.Domain.DTOs.Exceptions;
 using Taurob.Api.Domain.DTOs.Mission;
 using Taurob.Api.Core.Commands.Mission;
-using Taurob.Api.Domain.Interfaces.UnitOfWork;
+using Taurob.Api.Infra.Data.Context;
 
 namespace Taurob.Api.Application.UseCases.Mission.Commands;
 
 public class UpdateMissionCommandHandler : IRequestHandler<UpdateMissionCommand, ResultDto<MissionResponse>>
 {
-    private readonly IUnitOfWork _uw;
-    public UpdateMissionCommandHandler(IUnitOfWork uw) => _uw = uw;
+    private readonly TaurobDBContext _dbContext;
+    public UpdateMissionCommandHandler(TaurobDBContext dbContext) => _dbContext = dbContext;
 
 
     public async Task<ResultDto<MissionResponse>> Handle(UpdateMissionCommand request, CancellationToken cancellationToken)

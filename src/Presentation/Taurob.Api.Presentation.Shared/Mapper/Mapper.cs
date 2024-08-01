@@ -10,5 +10,5 @@ public static class Mapper<TDestination, TOrigin>
 
         var mapper = config.CreateMapper();
         return mapper.Map<TDestination>(command);
-    }    
+    }
 }
