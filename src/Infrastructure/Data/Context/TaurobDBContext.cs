@@ -7,9 +7,9 @@ using System.Reflection.Emit;
 namespace Mc2.CrudTest.Infra.Data.Context;
 
 
-public class TaurobDB : DbContext
+public class TaurobDBContext : DbContext
 {
-    public TaurobDB(DbContextOptions<TaurobDB> options) : base(options)
+    public TaurobDBContext(DbContextOptions<TaurobDBContext> options) : base(options)
     {
     }
 
@@ -18,7 +18,7 @@ public class TaurobDB : DbContext
     {
 
 
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TaurobDB).Assembly); base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TaurobDBContext).Assembly); base.OnModelCreating(modelBuilder);
     }
 
 
