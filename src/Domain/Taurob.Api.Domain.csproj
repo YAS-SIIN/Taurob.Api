@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\Mission\" />
     <Folder Include="Enums\" />
     <Folder Include="ValueObjects\" />
   </ItemGroup>

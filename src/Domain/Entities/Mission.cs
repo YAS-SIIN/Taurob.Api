@@ -17,6 +17,10 @@ public class Mission : BaseEntity<int>
     /// Name of mission
     /// </summary>
     public string Name { get; set; }
+
+    /// <summary>
+    /// Robot of mission
+    /// </summary>
     public Robot Robot { get; set; }
 
 }
