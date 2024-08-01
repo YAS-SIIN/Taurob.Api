@@ -13,7 +13,7 @@ public class CreateMissionCommand_Test
     public CreateMissionCommand_Test()
     {
         TestTools.Initialize();
-        _createMissionCommandHandler = new CreateMissionCommandHandler(TestTools._dbContext);
+        _createMissionCommandHandler = new CreateMissionCommandHandler(TestTools._dbContext!);
         _validationRules = new CreateMissionCommandValidator();
     }
 
@@ -34,7 +34,7 @@ public class CreateMissionCommand_Test
         Assert.Equal(insertedRow.Name, responseData.Data.Name);
         Assert.Equal(insertedRow.RobotId, responseData.Data.RobotId);
 
-        TestTools._dbContext.Dispose();
+        TestTools._dbContext?.Dispose();
     }
 
     [Theory]
@@ -53,7 +53,7 @@ public class CreateMissionCommand_Test
         Assert.True(validation.IsValid);
 
         await Assert.ThrowsAsync<ErrorException>(async () => await _createMissionCommandHandler.Handle(requestData, CancellationToken.None));
-        TestTools._dbContext.Dispose();
+        TestTools._dbContext?.Dispose();
 
     }
 
