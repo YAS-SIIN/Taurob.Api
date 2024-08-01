@@ -8,9 +8,12 @@
 
   <ItemGroup>
     <Folder Include="DTOs\" />
-    <Folder Include="Entities\" />
     <Folder Include="Enums\" />
     <Folder Include="ValueObjects\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
   </ItemGroup>
 
 </Project>

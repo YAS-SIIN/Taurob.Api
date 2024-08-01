@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 
+using Taurob.Api.Domain.Entities;
+
 namespace Mc2.CrudTest.Infra.Data.Context;
 
 
@@ -13,10 +15,14 @@ public class TaurobDBContext : DbContext
     {
     }
 
+    public DbSet<Robot> Robots { get; set; }
+    public DbSet<Mission> Missions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 
+        new RobotEntityTypeConfiguration().Configure(modelBuilder.Entity<Robot>());
+        new MissionEntityTypeConfiguration().Configure(modelBuilder.Entity<Mission>());
 
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(TaurobDBContext).Assembly); base.OnModelCreating(modelBuilder);
     }
