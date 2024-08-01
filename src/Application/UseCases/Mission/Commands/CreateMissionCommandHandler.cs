@@ -10,6 +10,9 @@ using Taurob.Api.Presentation.Shared.Tools;
 
 namespace Taurob.Api.Application.UseCases.Mission.Commands;
 
+/// <summary>
+/// Hndler for creating a mission
+/// </summary>
 public class CreateMissionCommandHandler : IRequestHandler<CreateMissionCommand, ResultDto<MissionResponse>>
 {
 

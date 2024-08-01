@@ -4,6 +4,7 @@ using Taurob.Api.Core.Queries.Robot;
 using Taurob.Api.Domain.DTOs.Exceptions;
 using Taurob.Api.Domain.DTOs.Robot;
 using Taurob.Api.Infra.Data.Context;
+using Taurob.Api.Presentation.Shared.Tools;
 
 namespace Taurob.Api.Application.Application.UseCases.Robots.Queries;
 
