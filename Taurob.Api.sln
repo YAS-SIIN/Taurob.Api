@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taurob.Api", "Taurob.Api\Taurob.Api.csproj", "{602DD22A-BCE9-4ABA-B4D6-12F35DE5F4DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taurob.Api.Api", "src\Presentation\WebApi\Taurob.Api.Presentation.WebApi.csproj", "{602DD22A-BCE9-4ABA-B4D6-12F35DE5F4DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taurob.Api.Application", "src\Application\Taurob.Api.Application.csproj", "{BB12B75F-71A5-41CF-8E91-8B8A65FE3C7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taurob.Api.Domain", "src\Domain\Taurob.Api.Domain.csproj", "{EDF180A9-424E-4399-B9AE-3DD6A7501630}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{602DD22A-BCE9-4ABA-B4D6-12F35DE5F4DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{602DD22A-BCE9-4ABA-B4D6-12F35DE5F4DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{602DD22A-BCE9-4ABA-B4D6-12F35DE5F4DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB12B75F-71A5-41CF-8E91-8B8A65FE3C7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB12B75F-71A5-41CF-8E91-8B8A65FE3C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB12B75F-71A5-41CF-8E91-8B8A65FE3C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB12B75F-71A5-41CF-8E91-8B8A65FE3C7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDF180A9-424E-4399-B9AE-3DD6A7501630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDF180A9-424E-4399-B9AE-3DD6A7501630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDF180A9-424E-4399-B9AE-3DD6A7501630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDF180A9-424E-4399-B9AE-3DD6A7501630}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
