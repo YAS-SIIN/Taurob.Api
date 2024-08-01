@@ -9,7 +9,7 @@ using Taurob.Api.Domain.Common;
 namespace Taurob.Api.Domain.Entities;
 
 /// <summary>
-/// Robot Entity
+/// Robot entity
 /// </summary>
 public class Robot : BaseEntity<int>
 {

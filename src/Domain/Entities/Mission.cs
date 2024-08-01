@@ -9,11 +9,10 @@ using Taurob.Api.Domain.Common;
 namespace Taurob.Api.Domain.Entities;
 
 /// <summary>
-/// Mission Entity
+/// Mission entity
 /// </summary>
 public class Mission : BaseEntity<int>
 {
-    public Mission() { }
     /// <summary>
     /// Name of mission
     /// </summary>
