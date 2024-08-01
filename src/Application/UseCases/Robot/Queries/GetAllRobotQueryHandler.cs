@@ -10,6 +10,9 @@ using Taurob.Api.Presentation.Shared.Tools;
 
 namespace Taurob.Api.Application.Application.UseCases.Robots.Queries;
 
+/// <summary>
+/// Hndler for get list of robot
+/// </summary>
 public class GetAllRobotQueryHandler : IRequestHandler<GetAllRobotQuery, ResultDto<IList<RobotResponse>>>
 {
     private readonly TaurobDBContext _dbContext;

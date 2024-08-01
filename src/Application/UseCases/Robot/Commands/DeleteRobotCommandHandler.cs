@@ -8,6 +8,9 @@ using Taurob.Api.Presentation.Shared.Tools;
 
 namespace Taurob.Api.Application.UseCases.Robot.Commands;
 
+/// <summary>
+/// Hndler for deleting a robot
+/// </summary>
 public class DeleteRobotCommandHandler : IRequestHandler<DeleteRobotCommand, ResultDto<int>>
 {
     private readonly TaurobDBContext _dbContext;

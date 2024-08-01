@@ -12,6 +12,9 @@ using Taurob.Api.Presentation.Shared.Mapper;
 
 namespace Taurob.Api.Application.UseCases.Robot.Commands;
 
+/// <summary>
+/// Hndler for creating a robot
+/// </summary>
 public class CreateRobotCommandHandler : IRequestHandler<CreateRobotCommand, ResultDto<RobotResponse>>
 {
     private readonly TaurobDBContext _dbContext;

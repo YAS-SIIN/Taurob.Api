@@ -10,6 +10,9 @@ using Taurob.Api.Presentation.Shared.Mapper;
 
 namespace Taurob.Api.Application.Application.UseCases.Robots.Queries;
 
+/// <summary>
+/// Hndler for get a robot
+/// </summary>
 public class GetRobotQueryHandler : IRequestHandler<GetRobotQuery, ResultDto<RobotResponse>>
 {
     private readonly TaurobDBContext _dbContext;
