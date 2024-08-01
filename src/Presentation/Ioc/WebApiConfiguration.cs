@@ -20,10 +20,10 @@ public static class WebApiConfiguration
         services.AddDbContext<TaurobDBContext>(options => options.UseInMemoryDatabase("TaurobDBContext"));
          
         //Register core layer 
-        services.AddValidatorsFromAssembly(typeof(InjectCore).GetType().Assembly);
+        services.AddValidatorsFromAssembly(typeof(InjectCore).Assembly);
 
         //Register application layer
-        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(InjectApplication).GetType().Assembly));
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(InjectApplication).Assembly));
 
     }
 
