@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Application\Taurob.Api.Application.csproj" />
     <ProjectReference Include="..\..\Core\Taurob.Api.Core.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Data\Taurob.Api.Infrastructure.Data.csproj" />
   </ItemGroup>

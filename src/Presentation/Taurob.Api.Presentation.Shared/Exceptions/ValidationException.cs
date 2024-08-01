@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿
+using FluentValidation.Results;
 
 namespace Taurob.Api.Presentation.Shared.Exceptions;
 
