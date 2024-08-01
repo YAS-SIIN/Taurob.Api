@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taurob.Api.Domain", "src\Do
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taurob.Api.Core", "src\Core\Taurob.Api.Core.csproj", "{EAE7CED3-1900-4F6E-A02F-DA46D54998C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taurob.Api.Infrastructure.Data", "src\Infrastructure\Data\Taurob.Api.Infrastructure.Data.csproj", "{602EA1F9-E7B4-4670-AADF-A6846F90E5D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taurob.Api.Infrastructure.Data", "src\Infrastructure\Data\Taurob.Api.Infrastructure.Data.csproj", "{602EA1F9-E7B4-4670-AADF-A6846F90E5D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taurob.Api.Presentation.Ioc", "src\Presentation\Ioc\Taurob.Api.Presentation.Ioc.csproj", "{4D966071-C7C9-4AA1-BF01-3DDA2E0CC46B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taurob.Api.Presentation.Ioc", "src\Presentation\Ioc\Taurob.Api.Presentation.Ioc.csproj", "{4D966071-C7C9-4AA1-BF01-3DDA2E0CC46B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taurob.Api.Presentation.Shared", "src\Presentation\Taurob.Api.Presentation.Shared\Taurob.Api.Presentation.Shared.csproj", "{478D5651-9803-4FF0-A5DB-028DAABE5920}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{4D966071-C7C9-4AA1-BF01-3DDA2E0CC46B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D966071-C7C9-4AA1-BF01-3DDA2E0CC46B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D966071-C7C9-4AA1-BF01-3DDA2E0CC46B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{478D5651-9803-4FF0-A5DB-028DAABE5920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{478D5651-9803-4FF0-A5DB-028DAABE5920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{478D5651-9803-4FF0-A5DB-028DAABE5920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{478D5651-9803-4FF0-A5DB-028DAABE5920}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
