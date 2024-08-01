@@ -23,7 +23,9 @@ public class GetAllMissionQueryHandler : IRequestHandler<GetAllMissionQuery, Res
         var response = _dbContext.Missions;
         var resData = response.Select(x => new MissionResponse
         {
+            Id = x.Id,
             Name = x.Name,
+            Description = x.Description,
             RobotData = new Domain.DTOs.Robot.RobotResponse
             {
                 Id = x.Robot.Id,
@@ -31,7 +33,6 @@ public class GetAllMissionQueryHandler : IRequestHandler<GetAllMissionQuery, Res
                 Description =  x.Robot.Description,
                 Modelname = x.Robot.Modelname
             },
-            Id = x.Id
         }).ToList();
 
         return ResultDto<IList<MissionResponse>>.ReturnData(resData, (int)EnumResponseStatus.OK, (int)EnumResponseResultCodes.Success, EnumResponseResultCodes.Success.GetDisplayName());
