@@ -1,4 +1,5 @@
 using Taurob.Api.Presentation.Ioc;
+using Taurob.Api.Presentation.WebApi;
 using Taurob.Api.Presentation.WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,13 @@ builder.Services.Register();
 builder.Services.AddScoped<ExceptionHandlingMiddleware>();
 
 var app = builder.Build();
+
+// Initializing new data
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    DataGenerator.SeedData(services);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
