@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ioc\Taurob.Api.Presentation.Ioc.csproj" />
+    <ProjectReference Include="..\Shared\Taurob.Api.Presentation.Shared.csproj" />
   </ItemGroup>
 
 </Project>

@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taurob.Api.Infrastructure.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taurob.Api.Presentation.Ioc", "src\Presentation\Ioc\Taurob.Api.Presentation.Ioc.csproj", "{4D966071-C7C9-4AA1-BF01-3DDA2E0CC46B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taurob.Api.Presentation.Shared", "src\Presentation\Taurob.Api.Presentation.Shared\Taurob.Api.Presentation.Shared.csproj", "{478D5651-9803-4FF0-A5DB-028DAABE5920}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taurob.Api.Presentation.Shared", "src\Presentation\Shared\Taurob.Api.Presentation.Shared.csproj", "{478D5651-9803-4FF0-A5DB-028DAABE5920}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taurob.Api.UnitTest", "tests\Taurob.Api.UnitTest\Taurob.Api.UnitTest.csproj", "{A47E8414-D435-4D59-BA00-49724111651D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{478D5651-9803-4FF0-A5DB-028DAABE5920}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{478D5651-9803-4FF0-A5DB-028DAABE5920}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{478D5651-9803-4FF0-A5DB-028DAABE5920}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A47E8414-D435-4D59-BA00-49724111651D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A47E8414-D435-4D59-BA00-49724111651D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A47E8414-D435-4D59-BA00-49724111651D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A47E8414-D435-4D59-BA00-49724111651D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
