@@ -47,6 +47,7 @@ public static class TestTools
             List<Robot> robot = new() {
               new Robot { Name = "Yasin", Modelname = "Asadnezhad" },
               new Robot { Name = "Test", Modelname = "Test1" },
+              new Robot { Name = "Test2", Modelname = "Test2" },
         };
             _dbContext.Robots.AddRange(robot);
             _dbContext.SaveChanges();
@@ -56,7 +57,8 @@ public static class TestTools
         {
             List<Mission> mission = new() {
               new Mission { Name = "Yasin", RobotId = _dbContext.Robots.FirstOrDefault()?.Id ?? 0 },
-              new Mission { Name = "Test", RobotId = _dbContext.Robots.FirstOrDefault()?.Id ?? 0 },
+              new Mission { Name = "Test1", RobotId = _dbContext.Robots.FirstOrDefault()?.Id ?? 0 },
+              new Mission { Name = "Test2", RobotId = _dbContext.Robots.FirstOrDefault()?.Id ?? 0 },
         };
             _dbContext.Missions.AddRange(mission);
             _dbContext.SaveChanges();

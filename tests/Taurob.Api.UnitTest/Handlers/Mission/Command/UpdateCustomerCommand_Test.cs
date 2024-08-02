@@ -13,7 +13,7 @@ public class UpdateMissionCommand_Test
     public UpdateMissionCommand_Test()
     {
         TestTools.Initialize();
-        _updateMissionCommandHandler = new UpdateMissionCommandHandler(TestTools._dbContext);
+        _updateMissionCommandHandler = new UpdateMissionCommandHandler(TestTools._dbContext!);
         _validationRules = new UpdateMissionCommandValidator();
 
     }
