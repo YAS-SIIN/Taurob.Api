@@ -4,16 +4,18 @@ using FluentValidation;
 using Taurob.Api.Application.Application.UseCases.Robots.Queries;
 using Taurob.Api.Core.Queries.Robot;
 using Taurob.Api.UnitTest;
-namespace Mc2.CrudTest.UnitTest.Handlers.Robot.Query;
+using Taurob.Api.UnitTest.Handlers.Mission.Query;
+namespace Taurob.Api.UnitTest.Handlers.Robot.Query;
 
 public class GetAllRobotQuery_Test
 {
     private readonly GetAllRobotQueryHandler _getAllRobotQueryHandler;
+    private readonly TestTools _testTools;
     public GetAllRobotQuery_Test()
     {
-
-        TestTools.Initialize();
-        _getAllRobotQueryHandler = new GetAllRobotQueryHandler(TestTools._dbContext!);
+        _testTools = new TestTools();
+        _testTools.Initialize(nameof(GetAllRobotQuery_Test));
+        _getAllRobotQueryHandler = new GetAllRobotQueryHandler(_testTools._dbContext!);
 
     }
 

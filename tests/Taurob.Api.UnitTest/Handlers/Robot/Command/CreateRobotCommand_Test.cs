@@ -3,6 +3,7 @@ using Taurob.Api.Application.UseCases.Robot.Commands;
 using Taurob.Api.Core.Commands.Robot;
 using Taurob.Api.Domain.DTOs.Exceptions;
 using Taurob.Api.Domain.Enums;
+using Taurob.Api.UnitTest.UnitTest.Handlers.Mission.Command;
 
 namespace Taurob.Api.UnitTest.UnitTest.Handlers.Robot.Command;
 
@@ -10,10 +11,12 @@ public class CreateRobotCommand_Test
 {
     private readonly CreateRobotCommandHandler _createRobotCommandHandler;
     private readonly CreateRobotCommandValidator _validationRules;
+    private readonly TestTools _testTools;
     public CreateRobotCommand_Test()
     {
-        TestTools.Initialize();
-        _createRobotCommandHandler = new CreateRobotCommandHandler(TestTools._dbContext!);
+        _testTools = new TestTools();
+        _testTools.Initialize(nameof(CreateRobotCommand_Test));
+        _createRobotCommandHandler = new CreateRobotCommandHandler(_testTools._dbContext!);
         _validationRules = new CreateRobotCommandValidator();
     }
 
@@ -28,13 +31,13 @@ public class CreateRobotCommand_Test
 
         Assert.Equal((int)EnumResponseStatus.OK, responseData.StatusCode);
 
-        var insertedRow = await TestTools._dbContext.Robots.FindAsync(responseData.Data.Id);
+        var insertedRow = await _testTools._dbContext.Robots.FindAsync(responseData.Data.Id);
 
         Assert.NotNull(insertedRow);
         Assert.Equal(insertedRow.Name, responseData.Data.Name);
         Assert.Equal(insertedRow.Modelname, responseData.Data.Modelname);
 
-        TestTools._dbContext?.Dispose();
+        _testTools._dbContext?.Dispose();
     }
 
     [Theory]

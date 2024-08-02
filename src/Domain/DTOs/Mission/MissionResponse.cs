@@ -19,4 +19,6 @@ public class MissionResponse : BaseResponse
     [DisplayName("Robot")]
     public int RobotId { get; set; }
      
+    public  RobotResponse? RobotResponse { get; set; }
+
 }

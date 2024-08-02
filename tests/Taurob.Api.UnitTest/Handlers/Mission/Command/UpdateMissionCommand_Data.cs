@@ -7,7 +7,7 @@ public class UpdateMissionCommand_Data
     public static IEnumerable<object[]> SetDataFor_UpdateMission_WithEverythingIsOk()
     {
         yield return new object[] { new UpdateMissionCommand() {
-            Id = 2,
+            Id = 1,
             Name = "Yasin2",
             Description = "Asadnezhad",
             RobotId = 1,

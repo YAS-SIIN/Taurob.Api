@@ -3,17 +3,18 @@ using FluentValidation;
 
 using Taurob.Api.Application.Application.UseCases.Missions.Queries;
 using Taurob.Api.Core.Queries.Mission;
-using Taurob.Api.UnitTest;
-namespace Mc2.CrudTest.UnitTest.Handlers.Mission.Query;
+using Taurob.Api.UnitTest.UnitTest.Handlers.Robot.Command;
+namespace Taurob.Api.UnitTest.Handlers.Mission.Query;
 
 public class GetAllMissionQuery_Test
 {
     private readonly GetAllMissionQueryHandler _getAllMissionQueryHandler;
+    private readonly TestTools _testTools;
     public GetAllMissionQuery_Test()
     {
-
-        TestTools.Initialize();
-        _getAllMissionQueryHandler = new GetAllMissionQueryHandler(TestTools._dbContext!);
+        _testTools = new TestTools();
+        _testTools.Initialize(nameof(GetAllMissionQuery_Test));
+        _getAllMissionQueryHandler = new GetAllMissionQueryHandler(_testTools._dbContext!);
 
     }
 

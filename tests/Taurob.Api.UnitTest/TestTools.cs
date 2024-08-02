@@ -15,39 +15,39 @@ using Taurob.Api.Infra.Data.Context;
 
 namespace Taurob.Api.UnitTest;
 
-public static class TestTools
+public class TestTools
 { 
-    public static TaurobDBContext? _dbContext; 
+    public TaurobDBContext? _dbContext; 
 
-    public static void Initialize()
+    public void Initialize(string testClassName)
     {
-        InitializeDBContext();
+        InitializeDBContext(testClassName);
         SeedData();
     }
 
     /// <summary>
     /// Inject DbContext
     /// </summary>
-    public static void InitializeDBContext()
+    public void InitializeDBContext(string testClassName)
     {
-        DbContextOptionsBuilder<TaurobDBContext> dbContextOptionsBuilder = new DbContextOptionsBuilder<TaurobDBContext>(); 
-        dbContextOptionsBuilder.UseInMemoryDatabase("Mc2CrudTestDbContext");
+        DbContextOptionsBuilder<TaurobDBContext> dbContextOptionsBuilder = new DbContextOptionsBuilder<TaurobDBContext>();
+        dbContextOptionsBuilder.UseInMemoryDatabase($"AppDbContext_{testClassName}");
         DbContextOptions<TaurobDBContext>? contextOptions = dbContextOptionsBuilder.Options;
-        _dbContext = new TaurobDBContext(contextOptions); 
+        _dbContext = new TaurobDBContext(contextOptions);
     }
     /// <summary>
     /// Initializing new data
     /// </summary>
-    /// <param name="serviceProvider"></param>
-    public static void SeedData()
+    public void SeedData()
     {
         // Add new robots
         if (!_dbContext.Robots.Any())
         {
             List<Robot> robot = new() {
               new Robot { Name = "Yasin", Modelname = "Asadnezhad" },
-              new Robot { Name = "Test", Modelname = "Test1" },
+              new Robot { Name = "Test1", Modelname = "Test1" },
               new Robot { Name = "Test2", Modelname = "Test2" },
+              new Robot { Name = "Test3", Modelname = "Test3" },
         };
             _dbContext.Robots.AddRange(robot);
             _dbContext.SaveChanges();
@@ -59,9 +59,12 @@ public static class TestTools
               new Mission { Name = "Yasin", RobotId = _dbContext.Robots.FirstOrDefault()?.Id ?? 0 },
               new Mission { Name = "Test1", RobotId = _dbContext.Robots.FirstOrDefault()?.Id ?? 0 },
               new Mission { Name = "Test2", RobotId = _dbContext.Robots.FirstOrDefault()?.Id ?? 0 },
+              new Mission { Name = "Test3", RobotId = _dbContext.Robots.FirstOrDefault()?.Id ?? 0 },
         };
             _dbContext.Missions.AddRange(mission);
             _dbContext.SaveChanges();
         }
+
+        //dbContext?.Dispose();
     }
 }

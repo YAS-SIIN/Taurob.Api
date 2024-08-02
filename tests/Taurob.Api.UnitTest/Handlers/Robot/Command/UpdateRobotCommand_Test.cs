@@ -1,8 +1,11 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
+
 using Taurob.Api.Application.UseCases.Robot.Commands;
 using Taurob.Api.Core.Commands.Robot;
 using Taurob.Api.Domain.DTOs.Exceptions;
 using Taurob.Api.Domain.Enums;
+using Taurob.Api.UnitTest.UnitTest.Handlers.Mission.Command;
 
 namespace Taurob.Api.UnitTest.UnitTest.Handlers.Robot.Command;
 
@@ -10,10 +13,12 @@ public class UpdateRobotCommand_Test
 {
     private readonly UpdateRobotCommandHandler _updateRobotCommandHandler;
     private readonly UpdateRobotCommandValidator _validationRules;
+    private readonly TestTools _testTools;
     public UpdateRobotCommand_Test()
     {
-        TestTools.Initialize();
-        _updateRobotCommandHandler = new UpdateRobotCommandHandler(TestTools._dbContext!);
+        _testTools = new TestTools();
+        _testTools.Initialize(nameof(UpdateRobotCommand_Test));
+        _updateRobotCommandHandler = new UpdateRobotCommandHandler(_testTools._dbContext!);
         _validationRules = new UpdateRobotCommandValidator();
 
     }
@@ -29,13 +34,13 @@ public class UpdateRobotCommand_Test
    
         Assert.Equal((int)EnumResponseStatus.OK, responseUpdateData.StatusCode);
 
-        var updatedRow = await TestTools._dbContext.Robots.FindAsync(responseUpdateData.Data.Id);
+        var updatedRow = await _testTools._dbContext.Robots.AsNoTracking().FirstOrDefaultAsync(x=>x.Id == responseUpdateData.Data.Id);
 
         Assert.NotNull(updatedRow);
         Assert.Equal(updatedRow.Name, responseUpdateData.Data.Name); 
 
 
-        TestTools._dbContext?.Dispose();
+        _testTools._dbContext?.Dispose();
     }
 
     [Theory]

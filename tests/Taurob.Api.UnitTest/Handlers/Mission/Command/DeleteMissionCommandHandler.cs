@@ -5,22 +5,24 @@ using Taurob.Api.Application.UseCases.Mission.Commands;
 using Taurob.Api.Core.Commands.Mission;
 using Taurob.Api.Domain.DTOs.Exceptions;
 using Taurob.Api.Domain.Enums;
+using Taurob.Api.UnitTest.UnitTest.Handlers.Robot.Command;
 
 namespace Taurob.Api.UnitTest.UnitTest.Handlers.Mission.Command;
 
 public class DeleteMissionCommand_Test
 {
     private readonly DeleteMissionCommandHandler _deleteMissionCommandHandler;
+    private readonly TestTools _testTools;
     public DeleteMissionCommand_Test()
     {
-
-        TestTools.Initialize();
-        _deleteMissionCommandHandler = new DeleteMissionCommandHandler(TestTools._dbContext!);
+        _testTools = new TestTools();
+        _testTools.Initialize(nameof(DeleteMissionCommand_Test));
+        _deleteMissionCommandHandler = new DeleteMissionCommandHandler(_testTools._dbContext!);
 
     }
 
     [Theory]
-    [InlineData(1)]
+    [InlineData(3)]
     public async Task DeleteMission_WhenEverythingIsOk_ShouldBeSucceeded(int id)
     { 
         var requestData = new DeleteMissionCommand { Id = id };
@@ -28,11 +30,11 @@ public class DeleteMissionCommand_Test
 
         Assert.Equal((int)EnumResponseStatus.OK, responseData.StatusCode);
 
-        var deletedRow = await TestTools._dbContext.Missions.FindAsync(id);
+        var deletedRow = await _testTools._dbContext.Missions.FindAsync(id);
 
         Assert.Null(deletedRow);
 
-        TestTools._dbContext?.Dispose();
+        _testTools._dbContext?.Dispose();
     }
 
     [Theory]
@@ -43,6 +45,6 @@ public class DeleteMissionCommand_Test
         var requestData = new DeleteMissionCommand { Id = id };
 
         await Assert.ThrowsAsync<ErrorException>(async () => await _deleteMissionCommandHandler.Handle(requestData, CancellationToken.None));
-        TestTools._dbContext?.Dispose();
+        _testTools._dbContext?.Dispose();
     }
 }

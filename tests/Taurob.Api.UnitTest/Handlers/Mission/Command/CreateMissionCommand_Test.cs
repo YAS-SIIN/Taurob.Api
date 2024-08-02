@@ -10,10 +10,12 @@ public class CreateMissionCommand_Test
 {
     private readonly CreateMissionCommandHandler _createMissionCommandHandler;
     private readonly CreateMissionCommandValidator _validationRules;
+    private readonly TestTools _testTools;
     public CreateMissionCommand_Test()
     {
-        TestTools.Initialize();
-        _createMissionCommandHandler = new CreateMissionCommandHandler(TestTools._dbContext!);
+        _testTools = new TestTools();
+        _testTools.Initialize(nameof(CreateMissionCommand_Test));
+        _createMissionCommandHandler = new CreateMissionCommandHandler(_testTools._dbContext!);
         _validationRules = new CreateMissionCommandValidator();
     }
 
@@ -28,13 +30,13 @@ public class CreateMissionCommand_Test
 
         Assert.Equal((int)EnumResponseStatus.OK, responseData.StatusCode);
 
-        var insertedRow = await TestTools._dbContext.Missions.FindAsync(responseData.Data.Id);
+        var insertedRow = await _testTools._dbContext.Missions.FindAsync(responseData.Data.Id);
 
         Assert.NotNull(insertedRow);
         Assert.Equal(insertedRow.Name, responseData.Data.Name);
         Assert.Equal(insertedRow.RobotId, responseData.Data.RobotId);
 
-        TestTools._dbContext?.Dispose();
+        _testTools._dbContext?.Dispose();
     }
 
     [Theory]
@@ -55,7 +57,7 @@ public class CreateMissionCommand_Test
         Assert.NotEqual(0, requestData.RobotId);
 
         await Assert.ThrowsAsync<ErrorException>(async () => await _createMissionCommandHandler.Handle(requestData, CancellationToken.None));
-        TestTools._dbContext?.Dispose();
+        _testTools._dbContext?.Dispose();
 
     }
 

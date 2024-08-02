@@ -1,8 +1,11 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
+
 using Taurob.Api.Application.UseCases.Mission.Commands;
 using Taurob.Api.Core.Commands.Mission;
 using Taurob.Api.Domain.DTOs.Exceptions;
 using Taurob.Api.Domain.Enums;
+using Taurob.Api.UnitTest.Handlers.Robot.Query;
 
 namespace Taurob.Api.UnitTest.UnitTest.Handlers.Mission.Command;
 
@@ -10,10 +13,12 @@ public class UpdateMissionCommand_Test
 {
     private readonly UpdateMissionCommandHandler _updateMissionCommandHandler;
     private readonly UpdateMissionCommandValidator _validationRules;
+    private readonly TestTools _testTools;
     public UpdateMissionCommand_Test()
     {
-        TestTools.Initialize();
-        _updateMissionCommandHandler = new UpdateMissionCommandHandler(TestTools._dbContext!);
+        _testTools = new TestTools();
+        _testTools.Initialize(nameof(UpdateMissionCommand_Test));
+        _updateMissionCommandHandler = new UpdateMissionCommandHandler(_testTools._dbContext!);
         _validationRules = new UpdateMissionCommandValidator();
 
     }
@@ -29,14 +34,14 @@ public class UpdateMissionCommand_Test
    
         Assert.Equal((int)EnumResponseStatus.OK, responseUpdateData.StatusCode);
 
-        var updatedRow = await TestTools._dbContext.Missions.FindAsync(responseUpdateData.Data.Id);
+        var updatedRow = await _testTools._dbContext.Missions.AsNoTracking().FirstOrDefaultAsync(x => x.Id == responseUpdateData.Data.Id);
 
         Assert.NotNull(updatedRow);
         Assert.Equal(updatedRow.Name, responseUpdateData.Data.Name);
         Assert.Equal(updatedRow.RobotId, responseUpdateData.Data.RobotId);
 
 
-        TestTools._dbContext.Dispose();
+        _testTools._dbContext.Dispose();
     }
 
     [Theory]
@@ -57,7 +62,7 @@ public class UpdateMissionCommand_Test
         Assert.True(validation.IsValid);
 
         await Assert.ThrowsAsync<ErrorException>(async () => await _updateMissionCommandHandler.Handle(requestData, CancellationToken.None));
-        TestTools._dbContext?.Dispose();
+        _testTools._dbContext?.Dispose();
 
     }
 

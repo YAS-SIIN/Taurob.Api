@@ -11,6 +11,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+        builder => builder.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .WithExposedHeaders("X-Pagination"));
+});
+
+
 builder.Services.Register();
 builder.Services.AddScoped<ExceptionHandlingMiddleware>();
 
@@ -30,7 +40,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+
+app.UseHttpsRedirection(); 
+app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 app.UseMiddleware<ExceptionHandlingMiddleware>();

@@ -1,8 +1,11 @@
 ﻿
 using MediatR;
+using System.Xml.Linq;
+
 using Taurob.Api.Core.Queries.Mission;
 using Taurob.Api.Domain.DTOs.Exceptions;
 using Taurob.Api.Domain.DTOs.Mission;
+using Taurob.Api.Domain.DTOs.Robot;
 using Taurob.Api.Domain.Enums;
 using Taurob.Api.Infra.Data.Context;
 using Taurob.Api.Presentation.Shared.Tools;
@@ -26,6 +29,13 @@ public class GetAllMissionQueryHandler : IRequestHandler<GetAllMissionQuery, Res
             Name = x.Name,
             Description = x.Description,
             RobotId = x.RobotId,
+            RobotResponse = new RobotResponse
+            {
+                Id = x.Robot.Id,
+                Name = x.Robot.Name,
+                Modelname = x.Robot.Modelname,
+                Description = x.Robot.Description,
+            }
         }).ToList();
 
         return ResultDto<IList<MissionResponse>>.ReturnData(resData, (int)EnumResponseStatus.OK, (int)EnumResponseResultCodes.Success, EnumResponseResultCodes.Success.GetDisplayName());
