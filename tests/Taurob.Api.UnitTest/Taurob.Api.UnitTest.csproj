@@ -27,4 +27,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Handlers\Robot\Command\" />
+  </ItemGroup>
+
 </Project>
