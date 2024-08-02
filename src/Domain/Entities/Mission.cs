@@ -25,7 +25,7 @@ public class Mission : BaseEntity<int>
     /// <summary>
     /// Robot of mission
     /// </summary>
-    public Robot Robot { get; set; }
+    public virtual Robot? Robot { get; set; }
 
 }
 

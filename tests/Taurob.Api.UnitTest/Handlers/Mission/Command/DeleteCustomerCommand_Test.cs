@@ -27,6 +27,11 @@ public class DeleteMissionCommand_Test
         var responseData = await _deleteMissionCommandHandler.Handle(requestData, CancellationToken.None);
 
         Assert.Equal((int)EnumResponseStatus.OK, responseData.StatusCode);
+
+        var deletedRow = await TestTools._dbContext.Missions.FindAsync(id);
+
+        Assert.Null(deletedRow);
+
         TestTools._dbContext?.Dispose();
     }
 

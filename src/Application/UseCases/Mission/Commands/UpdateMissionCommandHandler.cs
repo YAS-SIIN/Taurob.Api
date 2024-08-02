@@ -31,9 +31,17 @@ public class UpdateMissionCommandHandler : IRequestHandler<UpdateMissionCommand,
         if (inputData is null && inputData is not Domain.Entities.Mission)
             throw new ErrorException((int)EnumResponseStatus.NotFound, (int)EnumResponseResultCodes.NotFound, EnumResponseResultCodes.NotFound.ToString());
 
+        var robotData = await _dbContext.Robots.AsNoTracking().FirstOrDefaultAsync(x => x.Id == request.RobotId);
+
+        if (robotData is null && robotData is not Domain.Entities.Robot)
+            throw new ErrorException((int)EnumResponseStatus.NotFound, (int)EnumResponseResultCodes.NotFound, "Robot id not found");
+
         inputData = Mapper<Domain.Entities.Mission, UpdateMissionCommand>.MappClasses(request);
+        //inputData.Robot = robotData;
+
 
         _dbContext.Missions.Attach(inputData);
+
         _dbContext.Entry(inputData).State = EntityState.Modified;
         await _dbContext.SaveChangesAsync(cancellationToken);
 
