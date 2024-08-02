@@ -19,8 +19,9 @@ public class DataGenerator
         if (!_dbContext.Robots.Any())
         {
             List<Robot> robot = new() {
-              new Robot { Name = "Yasin", Modelname = "Asadnezhad" },
-              new Robot { Name = "Test", Modelname = "Test1" },
+              new Robot { Name = "Robot1", Modelname = "Robot Model 1", Description = "Test Robot 1" },
+              new Robot { Name = "Robot2", Modelname = "Robot Model 2", Description = "Test Robot 2" },
+              new Robot { Name = "Robot3", Modelname = "Robot Model 3", Description = "Test Robot 3" },
         };
             _dbContext.Robots.AddRange(robot);
             _dbContext.SaveChanges();
@@ -29,8 +30,9 @@ public class DataGenerator
         if (!_dbContext.Missions.Any())
         {
             List<Mission> mission = new() {
-              new Mission { Name = "Yasin", RobotId = _dbContext.Robots.FirstOrDefault()?.Id ?? 0 },
-              new Mission { Name = "Test", RobotId = _dbContext.Robots.FirstOrDefault()?.Id ?? 0 },
+              new Mission { Name = "Mission1", RobotId = _dbContext.Robots.FirstOrDefault()?.Id ?? 0, Description = "Test Mission 1" },
+              new Mission { Name = "Mission2", RobotId = _dbContext.Robots.FirstOrDefault()?.Id ?? 0, Description = "Test Mission 2" },
+              new Mission { Name = "Mission3", RobotId = _dbContext.Robots.FirstOrDefault()?.Id ?? 0, Description = "Test Mission 3" },
         };
             _dbContext.Missions.AddRange(mission);
             _dbContext.SaveChanges();
