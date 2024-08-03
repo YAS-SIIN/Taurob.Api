@@ -15,7 +15,6 @@
     <ProjectReference Include="..\Domain\Taurob.Api.Domain.csproj" />
     <ProjectReference Include="..\Infrastructure\Data\Taurob.Api.Infrastructure.Data.csproj" />
     <ProjectReference Include="..\Presentation\Shared\Taurob.Api.Presentation.Shared.csproj" />
-    <ProjectReference Include="..\Presentation\Taurob.Api.Presentation.Shared\Taurob.Api.Presentation.Shared.csproj" />
   </ItemGroup>
 
 </Project>
