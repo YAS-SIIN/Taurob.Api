@@ -47,7 +47,12 @@ internal sealed class ExceptionHandlingMiddleware : IMiddleware
 
         httpContext.Response.ContentType = "application/json";
         httpContext.Response.StatusCode = statusCode;
-        await httpContext.Response.WriteAsync(JsonSerializer.Serialize(errorData));
+        var options = new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        };
+        var errorJSON = JsonSerializer.Serialize(errorData, options);
+        await httpContext.Response.WriteAsync(errorJSON);
     }
 
     private static int GetStatusCode(Exception exception) =>
