@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taurob.Api.Presentation.Ioc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taurob.Api.Presentation.Shared", "src\Presentation\Shared\Taurob.Api.Presentation.Shared.csproj", "{478D5651-9803-4FF0-A5DB-028DAABE5920}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taurob.Api.UnitTest", "tests\Taurob.Api.UnitTest\Taurob.Api.UnitTest.csproj", "{A47E8414-D435-4D59-BA00-49724111651D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taurob.Api.UnitTest", "tests\UnitTest\Taurob.Api.UnitTest.csproj", "{A47E8414-D435-4D59-BA00-49724111651D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
